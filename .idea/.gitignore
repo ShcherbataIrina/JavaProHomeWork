@@ -1,4 +1,8 @@
 # Default ignored files
+*.class
+lib
+out
+.gradle
 
 /shelf/
 /workspace.xml
