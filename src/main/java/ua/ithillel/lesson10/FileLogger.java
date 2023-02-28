@@ -5,7 +5,7 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class FileLogger {
+public class FileLogger implements Logger{
     private final String TXT_FILE_EXTENSION = ".txt";
     private FileLoggerConfiguration config;
     private File currentFile;
@@ -22,10 +22,12 @@ public class FileLogger {
         }
     }
 
+    @Override
     public void debug(String message) {
         log(message, LoggingLevel.DEBUG);
     }
 
+    @Override
     public void info(String message) {
         log(message, LoggingLevel.INFO);
     }
