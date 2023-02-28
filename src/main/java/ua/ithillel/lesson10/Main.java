@@ -11,10 +11,10 @@ public class Main {
         FileLogger logger1 = new FileLogger(config1);
         FileLogger logger2 = new FileLogger(config2);
 
-            logger1.debug("Logging level =  Debug, method = debug \n");
-            logger1.info("Logging level =  Debug, method = info\n");
-            logger2.debug("Logging level =  Info, method = debug\n");
-            logger2.info("Logging level =  Info, method = info\n");
+        logger1.debug("Logging level =  Debug, method = debug");
+        logger1.info("Logging level =  Debug, method = info");
+        logger2.debug("Logging level =  Info, method = debug");
+        logger2.info("Logging level =  Info, method = info");
 
         FileLoggerConfigurationLoader loader = new FileLoggerConfigurationLoader();
         FileLoggerConfiguration config_props = loader.load("src/main/resources/logs-config.properties");

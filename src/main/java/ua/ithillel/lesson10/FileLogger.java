@@ -33,28 +33,18 @@ public class FileLogger {
     private void log(String message, LoggingLevel level) throws FileMaxSizeReachedException {
         if (level == LoggingLevel.DEBUG && config.getLevel() != LoggingLevel.DEBUG) {
             return;
-             }
-
-        try {
-            if (!currentFile.exists()) {
-                currentFile.createNewFile();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        nowSize = currentFile.length() + message.getBytes().length;
-        if (nowSize > config.getMaxSize()) {
-            createNewFile();
-            //throw new FileMaxSizeReachedException(config, nowSize);
         }
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy-HH.mm");
         String timeWriteMessage = dateFormat.format(new Date());
         String formatMessage = String.format("[%s][%s] Message: %s\n", timeWriteMessage, level, message);
 
+        nowSize = currentFile.length() + formatMessage.getBytes().length;
+        if (nowSize > config.getMaxSize()) {
+            createNewFile();
+        }
+
         try {
-            // currentWriterFile = new FileWriter(currentFile, true);
             currentWriterFile.write(formatMessage);
             currentWriterFile.flush();
 

@@ -7,11 +7,10 @@ public class FileLoggerConfigurationLoader {
 
     protected FileLoggerConfiguration load(String pathFile) {
 
-        FileInputStream input = null;
         Properties prop = new Properties();
 
-        try {
-            input = new FileInputStream(pathFile);
+        try (FileInputStream input = new FileInputStream(pathFile)) {
+
             prop.load(input);
 
             String path = prop.getProperty("path");
@@ -22,14 +21,6 @@ public class FileLoggerConfigurationLoader {
 
         } catch (IOException e) {
             throw new RuntimeException("Can't read properties file");
-        } finally {
-            try {
-                if(input != null){
-                    input.close();
-                }
-            } catch (IOException e) {
-                throw new RuntimeException("Can't close properties file");
-            }
         }
     }
 

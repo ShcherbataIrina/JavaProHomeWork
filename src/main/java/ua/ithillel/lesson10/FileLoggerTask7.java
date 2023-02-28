@@ -6,14 +6,15 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public  class FileLoggerTask7 extends Config implements Logger{
+public class FileLoggerTask7 implements Logger {
     private final String TXT_FILE_EXTENSION = ".txt";
+    private FileLoggerConfiguration config;
     private File currentFile;
     private FileWriter currentWriterFile;
     private long nowSize = 0;
 
     public FileLoggerTask7(FileLoggerConfiguration config) {
-        super(config);
+        this.config = config;
         this.currentFile = new File(config.getFilePath() + TXT_FILE_EXTENSION);
         try {
             this.currentWriterFile = new FileWriter(currentFile, true);
@@ -22,10 +23,9 @@ public  class FileLoggerTask7 extends Config implements Logger{
         }
     }
 
-
     @Override
     public void debug(String message) {
-       log(message, LoggingLevel.DEBUG);
+        log(message, LoggingLevel.DEBUG);
     }
 
     @Override
@@ -38,33 +38,22 @@ public  class FileLoggerTask7 extends Config implements Logger{
             return;
         }
 
-        try {
-            if (!currentFile.exists()) {
-                currentFile.createNewFile();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        nowSize = currentFile.length() + message.getBytes().length;
-        if (nowSize > config.getMaxSize()) {
-            createNewFile();
-            //throw new FileMaxSizeReachedException(config, nowSize);
-        }
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy-HH.mm");
         String timeWriteMessage = dateFormat.format(new Date());
         String formatMessage = String.format("[%s][%s] Message: %s\n", timeWriteMessage, level, message);
 
+        nowSize = currentFile.length() + formatMessage.getBytes().length;
+        if (nowSize > config.getMaxSize()) {
+            createNewFile();
+        }
+
         try {
-            // currentWriterFile = new FileWriter(currentFile, true);
             currentWriterFile.write(formatMessage);
             currentWriterFile.flush();
 
         } catch (IOException e) {
             throw new RuntimeException("Can't write message in file!");
         }
-
     }
 
     private void createNewFile() {
