@@ -32,7 +32,7 @@ public class FileLogger implements Logger{
         log(message, LoggingLevel.INFO);
     }
 
-    private void log(String message, LoggingLevel level) throws FileMaxSizeReachedException {
+    private void log(String message, LoggingLevel level) {
         if (level == LoggingLevel.DEBUG && config.getLevel() != LoggingLevel.DEBUG) {
             return;
         }
