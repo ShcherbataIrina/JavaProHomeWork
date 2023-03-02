@@ -9,7 +9,7 @@ public class FileLoggerConfigurationLoader {
 
         Properties prop = new Properties();
 
-        try (FileInputStream input = new FileInputStream(pathFile)) {
+        try (var input = this.getClass().getResourceAsStream(pathFile)) {
 
             prop.load(input);
 

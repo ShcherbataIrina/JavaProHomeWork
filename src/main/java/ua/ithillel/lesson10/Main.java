@@ -17,7 +17,7 @@ public class Main {
         logger2.info("Logging level =  Info, method = info");
 
         FileLoggerConfigurationLoader loader = new FileLoggerConfigurationLoader();
-        FileLoggerConfiguration config_props = loader.load("src/main/resources/logs-config.properties");
+        FileLoggerConfiguration config_props = loader.load("/logs-config.properties");
 
         System.out.println("Path: " + config_props.getFilePath());
         System.out.println("Level: " + config_props.getLevel());

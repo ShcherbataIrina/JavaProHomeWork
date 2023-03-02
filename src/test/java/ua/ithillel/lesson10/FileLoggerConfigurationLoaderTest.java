@@ -8,9 +8,9 @@ class FileLoggerConfigurationLoaderTest {
     @Test
     void shouldLoadProperties() {
         FileLoggerConfigurationLoader props = new FileLoggerConfigurationLoader();
-        FileLoggerConfiguration result = props.load("src/main/resources/logs-config.properties");
+        FileLoggerConfiguration result = props.load("/logs-config.properties");
 
-        assertEquals("/src/main/resources/logs-config.properties", result.getFilePath());
+        assertEquals("logs-config.properties", result.getFilePath());
         assertEquals(LoggingLevel.INFO, result.getLevel());
         assertEquals(2598637, result.getMaxSize());
     }
