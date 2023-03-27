@@ -1,6 +1,6 @@
 package ua.ithillel.lesson16;
 
-public class Quicksort {
+public class QuickSort {
     public static void quickSort(int[] array, int left, int right) {
         if (left >= right) {
             return;
