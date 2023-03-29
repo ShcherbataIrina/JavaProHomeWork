@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class ListHero {
     private final List<Hero> heroes;
+
     public ListHero(List<Hero> heroes) {
         this.heroes = heroes;
     }
@@ -19,15 +20,15 @@ public class ListHero {
 
     public String findTallest() {
         return heroes.stream()
-                .max(Comparator.comparing(hero -> hero.height()))
-                .map(hero -> hero.name())
+                .max(Comparator.comparing(Hero::height))
+                .map(Hero::name)
                 .orElse("No heroes on the list!");
     }
 
     public String findWeightiest() {
         return heroes.stream()
-                .max(Comparator.comparing(hero -> hero.weight()))
-                .map(hero -> hero.name())
+                .max(Comparator.comparing(Hero::weight))
+                .map(Hero::name)
                 .orElse("No heroes on the list!");
     }
 
@@ -38,7 +39,7 @@ public class ListHero {
 
     public Map<String, Long> countPersonInEachAlignment() {
         return heroes.stream()
-                .collect(Collectors.groupingBy(hero -> hero.alignment(), Collectors.counting()));
+                .collect(Collectors.groupingBy(Hero::alignment, Collectors.counting()));
     }
 
     public List<String> findMostPopularPublisher() {
@@ -61,9 +62,9 @@ public class ListHero {
                 .toList();
     }
 
-    public String mostPopularEyeColor(){
+    public String mostPopularEyeColor() {
         return heroes.stream()
-                .collect(Collectors.groupingBy(Hero::eyeColor,Collectors.counting()))
+                .collect(Collectors.groupingBy(Hero::eyeColor, Collectors.counting()))
                 .entrySet().stream()
                 .max(Map.Entry.comparingByValue())
                 .map(Map.Entry::getKey)
