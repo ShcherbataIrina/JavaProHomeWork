@@ -1,6 +1,5 @@
 package ua.ithillel.lesson23_patterns;
 
-import lombok.RequiredArgsConstructor;
 import ua.ithillel.lesson22.Hero;
 import ua.ithillel.lesson22.HeroDao;
 

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class HeroService {
-    private   HeroDao heroDao;
+    private HeroDao heroDao;
     private HeroMovieService heroMovieService;
 
     protected HeroService(HeroDao heroDao, HeroMovieService heroMovieService) {

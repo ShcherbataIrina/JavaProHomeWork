@@ -11,10 +11,12 @@ public class HeroDto {
         this.name = name;
         this.movies = movies;
     }
+
     public HeroDto() {
         this.name = name;
         this.movies = movies;
     }
+
     public static HeroDtoBuilder builder() {
         return new HeroDtoBuilder();
     }
@@ -27,16 +29,4 @@ public class HeroDto {
         return movies;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        HeroDto heroDto = (HeroDto) o;
-        return name.equals(heroDto.name) && movies.equals(heroDto.movies);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, movies);
-    }
 }
