@@ -21,15 +21,7 @@ class HeroServiceIntegrationTest {
     void shouldReturnListOfHeroes() {
         var listHeroesDto = target.getHeroes();
 
-        List<Hero> expect = new ArrayList<>(List.of(
-                Hero.builder().name("Hurry Porter").build(),
-                Hero.builder().name("Agent 007").build(),
-                Hero.builder().name("Green Arrow").build(),
-                Hero.builder().name("Batman").build(),
-                Hero.builder().name("Capitan America").build()
-        ));
-
-        assertEquals(expect.size(), listHeroesDto.size());
+        assertEquals(5, listHeroesDto.size());
 
     }
 }

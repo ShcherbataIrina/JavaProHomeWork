@@ -16,9 +16,6 @@ dependencies {
     
     implementation 'org.postgresql:postgresql:42.5.4'
 
-    compileOnly 'org.projectlombok:lombok:1.18.20'
-    annotationProcessor 'org.projectlombok:lombok:1.18.20'
-
     testImplementation 'org.mockito:mockito-core:5.3.1'
     testImplementation 'org.mockito:mockito-junit-jupiter:5.3.1'
     
@@ -26,4 +23,5 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    jvmArgs '-Xshare:off'
 }
