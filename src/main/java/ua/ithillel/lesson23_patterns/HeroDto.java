@@ -1,8 +1,10 @@
 package ua.ithillel.lesson23_patterns;
 
+import lombok.Data;
+
 import java.util.List;
 import java.util.Objects;
-
+@Data
 public class HeroDto {
     private String name;
     private List<String> movies;
