@@ -31,14 +31,14 @@ public class HeroDaoImpl implements HeroDao {
             students.add(Hero.builder()
                     .name(result.getString("name"))
                     .gender(result.getString("gender"))
-                    .eyeColor(result.getString("eyeColor"))
+                    .eyeColor(result.getString("eye_color"))
                     .race(result.getString("race"))
-                    .hairColor(result.getString("hairColor"))
+                    .hairColor(result.getString("hair_color"))
                     .height(result.getDouble("height"))
-                    .skinColor(result.getString("skinColor"))
+                    .skinColor(result.getString("skin_color"))
                     .alignment(result.getString("alignment"))
                     .weight(result.getInt("weight"))
-                    .publisherId(result.getLong("publisherId"))
+                    .publisherId(result.getLong("publisher_id"))
                     .build());
         }
         return students;
