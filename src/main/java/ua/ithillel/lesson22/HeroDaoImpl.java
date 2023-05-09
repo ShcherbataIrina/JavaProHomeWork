@@ -29,6 +29,7 @@ public class HeroDaoImpl implements HeroDao {
         var students = new ArrayList<Hero>();
         while (result.next()) {
             students.add(Hero.builder()
+                    .id(result.getInt("id"))
                     .name(result.getString("name"))
                     .gender(result.getString("gender"))
                     .eyeColor(result.getString("eye_color"))
@@ -57,8 +58,22 @@ public class HeroDaoImpl implements HeroDao {
     }
 
     @Override
+    public Hero findById(Long id) {
+        var sql = "select * from heroes where id = " + id;
+        try (var connection = dataSource.getConnection();
+             var statement = connection.createStatement()) {
+            var result = statement.executeQuery(sql);
+            return mapHero(result).stream()
+                    .findFirst()
+                    .orElseThrow();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public void create(Hero hero) {
-        var sql = "insert into heroes (name, gender, eyeColor, race, hairColor, height, skinColor, alignment, weight, publisherId) " +
+        var sql = "insert into heroes (name, gender, eye_color, race, hair_color, height, skin_color, alignment, weight, publisher_id) " +
                 "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (var connection = dataSource.getConnection();
              var statement = connection.prepareStatement(sql)) {
@@ -80,8 +95,8 @@ public class HeroDaoImpl implements HeroDao {
 
     @Override
     public void update(Hero hero) {
-        var sql = "update heroes set name = ?, gender = ?, eyeColor = ?, race = ?, hairColor = ?, height = ?, " +
-                "publisherId = ?, skinColor = ?, alignment = ?, weight = ? where id = ?";
+        var sql = "update heroes set name = ?, gender = ?, eye_color = ?, race = ?, hair_color = ?, height = ?, " +
+                " skin_color = ?, alignment = ?, weight = ?, publisher_id = ? where id = ?";
         try (var connection = dataSource.getConnection();
              var statement = connection.prepareStatement(sql)) {
             statement.setString(1, hero.getName());
@@ -92,8 +107,9 @@ public class HeroDaoImpl implements HeroDao {
             statement.setDouble(6, hero.getHeight());
             statement.setString(7, hero.getSkinColor());
             statement.setString(8, hero.getAlignment());
-            statement.setInt(10, hero.getWeight());
-            statement.setLong(9, hero.getPublisherId());
+            statement.setDouble(9, hero.getWeight());
+            statement.setLong(10, hero.getPublisherId());
+            statement.setInt(11, hero.getId());
             statement.executeUpdate();
 
         } catch (SQLException e) {

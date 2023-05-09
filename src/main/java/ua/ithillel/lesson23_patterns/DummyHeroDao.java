@@ -24,6 +24,14 @@ public class DummyHeroDao implements HeroDao {
     }
 
     @Override
+    public Hero findById(Long id) {
+        return heroes.stream()
+                .filter(hero -> hero.getId() == id)
+                .findFirst()
+                .orElseThrow();
+    }
+
+    @Override
     public void create(Hero hero) {
         heroes.add(hero);
     }

@@ -12,7 +12,7 @@ public class HeroFabric {
         return new HeroService(createDao(dataSource), createMovieService());
     }
 
-    private static HeroDao createDao(DataSource dataSource) {
+    public static HeroDao createDao(DataSource dataSource) {
         return new HeroDaoImpl(dataSource);
     }
 
