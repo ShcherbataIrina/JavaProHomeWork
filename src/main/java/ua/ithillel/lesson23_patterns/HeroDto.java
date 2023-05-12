@@ -3,18 +3,16 @@ package ua.ithillel.lesson23_patterns;
 import lombok.Data;
 
 import java.util.List;
-import java.util.Objects;
+
 @Data
 public class HeroDto {
+    private long id;
+
     private String name;
     private List<String> movies;
 
-    public HeroDto(String name, List<String> movies) {
-        this.name = name;
-        this.movies = movies;
-    }
-
-    public HeroDto() {
+    public HeroDto(long id, String name, List<String> movies) {
+        this.id = id;
         this.name = name;
         this.movies = movies;
     }
