@@ -11,7 +11,7 @@ public class HeroService {
     private HeroDao heroDao;
     private HeroMovieService heroMovieService;
 
-    protected HeroService(HeroDao heroDao, HeroMovieService heroMovieService) {
+    public HeroService(HeroDao heroDao, HeroMovieService heroMovieService) {
         this.heroDao = heroDao;
         this.heroMovieService = heroMovieService;
 
