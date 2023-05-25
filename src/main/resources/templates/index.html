@@ -1,0 +1,69 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+    body {
+        background: #E0FFFF;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    table, tbody{
+        width:100%;
+    }
+    th {
+        background-color: #FFFAF0;
+    }
+    th, td{
+       border:1px;
+       padding: 20px;
+        font-style: italic;
+        margin: 30 px 0;
+        text-align: left;
+    }
+    td{
+        background: #f6f6f6;
+    }
+
+    </style>
+</head>
+<body>
+
+<p th:text="'Now! ' + ${name} + '!'"/>
+
+<div th:switch="${heroes}">
+    <h2 th:case="null">No heroes yet!</h2>
+    <div th:case="*">
+        <h2>Heroes</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>gender</th>
+                <th>eyeColor</th>
+                <th>race</th>
+                <th>hairColor</th>
+                <th>height</th>
+                <th>skinColor</th>
+                <th>alignment</th>
+                <th>weight</th>
+                <th>publisherId</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="hero : ${heroes}">
+                <td th:text="${hero.name}"></td>
+                <td th:text="${hero.gender}"></td>
+                <td th:text="${hero.eyeColor}"></td>
+                <td th:text="${hero.race}"></td>
+                <td th:text="${hero.hairColor}"></td>
+                <td th:text="${hero.height}"></td>
+                <td th:text="${hero.skinColor}"></td>
+                <td th:text="${hero.alignment}"></td>
+                <td th:text="${hero.weight}"></td>
+                <td th:text="${hero.publisherId}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+</body>
+</html>

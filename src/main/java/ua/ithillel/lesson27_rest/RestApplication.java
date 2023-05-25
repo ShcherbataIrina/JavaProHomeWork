@@ -10,7 +10,7 @@ import ua.ithillel.lesson23_patterns.HeroService;
 
 import javax.sql.DataSource;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class RestApplication {
 
     public static void main(String[] args) {
