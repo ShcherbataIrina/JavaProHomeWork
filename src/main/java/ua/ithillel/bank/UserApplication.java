@@ -1,12 +1,12 @@
-package ua.ithillel.lesson31_spring_hero_MVC;
+package ua.ithillel.bank;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-//@SpringBootApplication
-public class HeroMvcApplication {
+@SpringBootApplication
+public class UserApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HeroMvcApplication.class, args);
+        SpringApplication.run(UserApplication.class, args);
     }
 }
