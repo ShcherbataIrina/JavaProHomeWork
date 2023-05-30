@@ -1,4 +1,4 @@
-package ua.ithillel.bank;
+package ua.ithillel.bank.user;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +15,8 @@ public class UserService implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) throws Exception {
-        userRepository.findAll()
-                .forEach(user -> System.out.println("User" + user));
+//        userRepository.findAll()
+//                .forEach(user -> System.out.println("User" + user));
 
         var newUser = User.builder()
                 .uid(UUID.randomUUID().toString())
@@ -33,8 +33,8 @@ public class UserService implements CommandLineRunner {
 //        System.out.println("User" + user);
 //
 //        userRepository.deleteById(8L);
-        System.out.println("Count users: " + userRepository.count());
-        System.out.println("Find users by email: " + userRepository.findByEmail("altest@gmail.com"));
+//        System.out.println("Count users: " + userRepository.count());
+//        System.out.println("Find users by email: " + userRepository.findByEmail("altest@gmail.com"));
 
     }
 }
