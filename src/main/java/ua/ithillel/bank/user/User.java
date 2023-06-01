@@ -1,4 +1,4 @@
-package ua.ithillel.bank;
+package ua.ithillel.bank.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,6 +19,7 @@ public class User {
     private String uid;
     private String name;
     private String email;
+
     @Enumerated(EnumType.STRING)
     private UserRole role;
 }
