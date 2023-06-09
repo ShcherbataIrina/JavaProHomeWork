@@ -28,7 +28,7 @@ public class UserService implements CommandLineRunner {
 //     var persisted = userRepository.save(newUser);
 //    System.out.println("User" + persisted);
 
-        var user = userRepository.findById(5L).orElseThrow();
+ //       var user = userRepository.findById(5L).orElseThrow();
 //        user.setRole(UserRole.CUSTOMER);
 //        System.out.println("User" + user);
 //
