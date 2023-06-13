@@ -46,20 +46,4 @@ public class CurrencyApiCurrencyConverter implements CurrencyConverter {
         return amount;
     }
 
-//    public static void main(String[] args) {
-//
-//        var props = new CurrencyProperties(
-//                "https://api.currencyapi.com/v3/latest",
-//                "uA77nOa4rMww32mGTTIE421i5XK7Hninkozq6y1Y"
-//        );
-//
-//        Currency from = Currency.getInstance("UAH");
-//        Currency to = Currency.getInstance("EUR");
-//        double amount = 100.0;
-//
-//        double convertedAmount = new CurrencyApiCurrencyConverter(props).convert(from, to, amount);
-//
-//        System.out.println(amount + " UAH is equal to " + convertedAmount + " EUR.");
-//    }
-
 }
