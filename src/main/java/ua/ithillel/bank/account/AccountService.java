@@ -1,9 +1,8 @@
 package ua.ithillel.bank.account;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import ua.ithillel.bank.person.PersonRepository;
 
 import java.util.List;
@@ -22,7 +21,7 @@ public class AccountService {
     }
 
     public List<AccountDto> findAccountByPerson(String personId) {
-     var person =   personRepository.findByUid(personId).orElseThrow();
+        var person = personRepository.findByUid(personId).orElseThrow();
         return accountRepository.findByPerson(person).stream()
                 .map(this::mapAccountToDto)
                 .toList();
@@ -39,7 +38,7 @@ public class AccountService {
         return mapAccountToDto(accountRepository.save(accountToUpdate));
     }
 
-    public AccountDto create(AccountDto account, String  personId) {
+    public AccountDto create(AccountDto account, String personId) {
         var person = personRepository.findByUid(personId).orElseThrow();
 
         var newAccount = accountRepository.save(Account.builder()
