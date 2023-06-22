@@ -1,11 +1,8 @@
 package ua.ithillel.lesson39_simple_tree;
 
-import lombok.RequiredArgsConstructor;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@RequiredArgsConstructor
 class SimpleTree {
     private Node rootNode;
 
