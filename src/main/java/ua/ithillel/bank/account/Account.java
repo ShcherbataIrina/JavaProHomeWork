@@ -22,4 +22,6 @@ public class Account {
     @ManyToOne
     @JoinColumn(name = "person_id")
     private Person person;
+
+    private String currency;
 }

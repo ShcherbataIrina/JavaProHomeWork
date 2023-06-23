@@ -45,7 +45,9 @@ public class AccountService {
                 .uid(UUID.randomUUID().toString())
                 .iban(account.iban())
                 .balance(account.balance())
+                .currency(account.currency())
                 .person(person)
+
                 .build());
         return mapAccountToDto(newAccount);
     }
@@ -55,7 +57,9 @@ public class AccountService {
                 .id(account.getUid())
                 .iban(account.getIban())
                 .balance(account.getBalance())
+                .currency(account.getCurrency())
                 .personId(account.getPerson().getId())
+
                 .build();
     }
 
