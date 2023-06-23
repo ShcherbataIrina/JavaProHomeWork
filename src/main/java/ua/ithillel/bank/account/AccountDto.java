@@ -7,6 +7,8 @@ public record AccountDto(
         String id,
         String iban,
         double balance,
+        String currency,
         Long personId
+
 ) {
 }

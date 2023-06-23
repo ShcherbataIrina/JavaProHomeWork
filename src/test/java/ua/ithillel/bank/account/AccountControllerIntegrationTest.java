@@ -46,6 +46,7 @@ class AccountControllerIntegrationTest {
                 .uid(UUID.randomUUID().toString())
                 .iban("UA2458140000037856932")
                 .balance(23651)
+                .currency("UAH")
                 .person(person)
                 .build());
 
@@ -53,6 +54,7 @@ class AccountControllerIntegrationTest {
                 .uid(UUID.randomUUID().toString())
                 .iban("UA4258100000144587236")
                 .balance(11245)
+                .currency("UAH")
                 .person(person)
                 .build());
 
@@ -77,6 +79,7 @@ class AccountControllerIntegrationTest {
                 .uid(UUID.randomUUID().toString())
                 .iban("UA1285496200000320458")
                 .balance(25843)
+                .currency("UAH")
                 .person(person)
                 .build());
 
@@ -84,6 +87,7 @@ class AccountControllerIntegrationTest {
                 .uid(UUID.randomUUID().toString())
                 .iban("UA96358200000145028635")
                 .balance(13859)
+                .currency("UAH")
                 .person(person)
                 .build());
 
@@ -91,6 +95,7 @@ class AccountControllerIntegrationTest {
                 .uid(UUID.randomUUID().toString())
                 .iban("UA96358200000145028635")
                 .balance(13859)
+                .currency("UAH")
                 .person(person2)
                 .build());
 
@@ -110,12 +115,13 @@ class AccountControllerIntegrationTest {
 
         var query = post("/api/persons/{person_id}/accounts", person.getUid())
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"iban\":\"UA32567820000042586\",\"balance\":11285}");
+                .content("{\"iban\":\"UA32567820000042586\",\"balance\":11285,\"currency\":\"UAH\"}");
 
         mockMvc.perform(query)
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.iban").value("UA32567820000042586"))
                 .andExpect(jsonPath("$.balance").value(11285))
+                .andExpect(jsonPath("$.currency").value("UAH"))
                 .andExpect(jsonPath("$.personId").isNotEmpty());
 
         assertEquals(accountRepository.findByPerson(person).size(), 1);
@@ -129,6 +135,7 @@ class AccountControllerIntegrationTest {
                 .uid(UUID.randomUUID().toString())
                 .iban("UA1285496200000320458")
                 .balance(25843)
+                .currency("UAH")
                 .person(person)
                 .build());
 
@@ -151,6 +158,7 @@ class AccountControllerIntegrationTest {
                 .uid(UUID.randomUUID().toString())
                 .iban("UA369524700000325438")
                 .balance(15742)
+                .currency("UAH")
                 .person(person)
                 .build());
 
