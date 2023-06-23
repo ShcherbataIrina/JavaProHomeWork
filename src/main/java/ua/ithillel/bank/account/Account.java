@@ -23,5 +23,6 @@ public class Account {
     @JoinColumn(name = "person_id")
     private Person person;
 
+    @Column(nullable = false)
     private String currency;
 }
