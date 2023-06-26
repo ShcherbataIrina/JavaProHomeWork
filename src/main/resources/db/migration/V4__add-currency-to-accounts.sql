@@ -1,5 +1,5 @@
-ALTER TABLE IF NOT EXISTS accounts
-ADD COLUMN currency varchar(5);
+ALTER TABLE  accounts
+ADD COLUMN IF NOT EXISTS currency varchar(5);
 
 UPDATE accounts
 SET currency = 'UAH';
