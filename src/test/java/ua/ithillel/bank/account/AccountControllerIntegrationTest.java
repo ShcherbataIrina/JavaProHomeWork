@@ -34,6 +34,7 @@ class AccountControllerIntegrationTest {
     void setup() {
         person = personRepository.save(Person.builder()
                 .uid(UUID.randomUUID().toString())
+                .name("Name")
                 .build());
     }
 
@@ -73,6 +74,7 @@ class AccountControllerIntegrationTest {
 
         var person2 = personRepository.save(Person.builder()
                 .uid(UUID.randomUUID().toString())
+                .name("NameTest")
                 .build());
 
         var account1 = accountRepository.save(Account.builder()
@@ -93,7 +95,7 @@ class AccountControllerIntegrationTest {
 
         var account3 = accountRepository.save(Account.builder()
                 .uid(UUID.randomUUID().toString())
-                .iban("UA96358200000145028635")
+                .iban("UA25684100000159863214")
                 .balance(13859)
                 .currency("UAH")
                 .person(person2)
